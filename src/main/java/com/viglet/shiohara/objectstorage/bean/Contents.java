@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-@XmlRootElement
+@XmlRootElement(name = "Contents")
 public class Contents {
 	
 	@JacksonXmlProperty(localName = "Key")

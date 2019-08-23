@@ -1,11 +1,17 @@
 package com.viglet.shiohara.objectstorage.bean;
 
+import java.util.List;
+
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
-@JacksonXmlRootElement(namespace = "http://s3.amazonaws.com/doc/2006-03-01/", localName = "ListBucketResult")
+@JacksonXmlRootElement(localName = "ListBucketResult")
 public class ListBucketResult {
-	@JacksonXmlProperty(localName = "Name")
+	@JacksonXmlProperty(isAttribute = true, localName = "xmlns")
+	private String namespace = "http://s3.amazonaws.com/doc/2006-03-01/";
+	
+	@JacksonXmlProperty(localName = "Name", namespace = "")
 	private String name;
 
 	@JacksonXmlProperty(localName = "Prefix")
@@ -20,8 +26,9 @@ public class ListBucketResult {
 	@JacksonXmlProperty(localName = "IsTruncated")
 	private boolean isTruncated;
 
+	@JacksonXmlElementWrapper(useWrapping = false)
 	@JacksonXmlProperty(localName = "Contents")
-	private Contents contents;
+	private List<Contents> contents2;
 
 	public String getName() {
 		return name;
@@ -55,7 +62,7 @@ public class ListBucketResult {
 		this.maxKeys = maxKeys;
 	}
 
-	public boolean isTruncated() {
+	public boolean getIsTruncated() {
 		return isTruncated;
 	}
 
@@ -63,12 +70,11 @@ public class ListBucketResult {
 		this.isTruncated = isTruncated;
 	}
 
-	public Contents getContents() {
-		return contents;
+	public List<Contents> getContents2() {
+		return contents2;
 	}
 
-	public void setContents(Contents contents) {
-		this.contents = contents;
+	public void setContents2(List<Contents> contents2) {
+		this.contents2 = contents2;
 	}
-
 }

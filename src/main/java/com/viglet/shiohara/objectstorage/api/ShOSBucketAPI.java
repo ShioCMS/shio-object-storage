@@ -92,8 +92,25 @@ public class ShOSBucketAPI {
 		owner.setDisplayName("mtd@amazon.com");
 
 		contents.setOwner(owner);
+		
+		Contents contents2 = new Contents();
+		contents2.setKey("my-image2.jpg");
+		contents2.setLastModified(new Date());
 
-		shOSMyBucket.setContents(contents);
+		contents2.seteTag("&quot;fba9dede5f27731c9771645a39863328&quot;");
+		contents2.setSize(1234);
+
+		Owner owner2 = new Owner();
+		owner2.setId("75aa57f09aa0c8caeab4f8c24e99d10f8e7faeebf76c078efc7c6caea54ba06a");
+		owner2.setDisplayName("mtd@amazon.com2");
+
+		contents2.setOwner(owner2);
+		
+		List<Contents> contentList = new ArrayList<>();
+		
+		contentList.add(contents);
+		contentList.add(contents2);
+		shOSMyBucket.setContents2(contentList);
 
 		return shOSMyBucket;
 	}
